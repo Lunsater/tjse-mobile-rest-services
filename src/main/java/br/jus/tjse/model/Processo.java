@@ -60,7 +60,7 @@ public class Processo implements Serializable {
 	private short codTipoProcesso;
 
 	@Column(name="codUsuario")
-	private long codUsuario;
+	private Long codUsuario;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="dtBaixa")
@@ -222,11 +222,11 @@ public class Processo implements Serializable {
 		this.codTipoProcesso = codTipoProcesso;
 	}
 
-	public long getCodUsuario() {
+	public Long getCodUsuario() {
 		return this.codUsuario;
 	}
 
-	public void setCodUsuario(long codUsuario) {
+	public void setCodUsuario(Long codUsuario) {
 		this.codUsuario = codUsuario;
 	}
 

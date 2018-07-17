@@ -15,7 +15,7 @@ public class UsuarioDAO {
 		this.entityManager = new ProducerEntityManager().getEntityManager();
 	}
 	
-	public Usuario getUsuarioPorLogin(String login) {
+	public Usuario obterUsuarioPorLogin(String login) {
 		String sql = "from Usuario u where u.login = :login";
 		TypedQuery<Usuario> qry = this.entityManager.createQuery(sql, Usuario.class);
 		qry.setParameter("login", login);
@@ -28,7 +28,7 @@ public class UsuarioDAO {
 		} 
 	}
 	
-	public Usuario getUsuarioPorMatricula(Integer matricula) {
+	public Usuario obterUsuarioPorMatricula(Integer matricula) {
 		String sql = "from Usuario u where u.numMatricula = :matricula";
 		TypedQuery<Usuario> qry = this.entityManager.createQuery(sql, Usuario.class);
 		qry.setParameter("matricula", matricula);
