@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -27,40 +28,40 @@ public class Processo implements Serializable {
 
 	@Id
 	@Column(name="numProcesso")
-	private long numProcesso;
+	private Long numProcesso;
 
 	@Column(name="codAcao")
-	private short codAcao;
+	private Short codAcao;
 
 	@Column(name="codCategoria")
-	private short codCategoria;
+	private Short codCategoria;
 
 	@Column(name="codClasse")
-	private int codClasse;
+	private Integer codClasse;
 
 	@Column(name="codClasseCNJ")
-	private short codClasseCNJ;
+	private Short codClasseCNJ;
 
 	@Column(name="codCompetencia")
-	private int codCompetencia;
+	private Integer codCompetencia;
 
 	@Column(name="codDestino")
-	private int codDestino;
+	private Integer codDestino;
 
 	@Column(name="codFase")
-	private int codFase;
+	private Integer codFase;
 
 	@Column(name="codMovimento")
-	private int codMovimento;
+	private Integer codMovimento;
 
 	@Column(name="codMovimentoRelevante")
-	private short codMovimentoRelevante;
+	private Short codMovimentoRelevante;
 
 	@Column(name="codTipoProcesso")
-	private short codTipoProcesso;
+	private Short codTipoProcesso;
 
 	@Column(name="codUsuario")
-	private long codUsuario;
+	private Long codUsuario;
 
 	@Temporal(TemporalType.DATE)
 	@Column(name="dtBaixa")
@@ -112,29 +113,29 @@ public class Processo implements Serializable {
 	private String numProcOrigem;
 
 	@Column(name="seqMovimento")
-	private int seqMovimento;
+	private Integer seqMovimento;
 
 	@Column(name="seqMovimentoRelevante")
-	private int seqMovimentoRelevante;
+	private Integer seqMovimentoRelevante;
 
 	@Column(name="tpOrigem")
-	private short tpOrigem;
+	private Short tpOrigem;
 
 	@Column(name="vlCausa")
 	private BigDecimal vlCausa;
 
-	//bi-directional many-to-one association to ProcessoTipoParte
-	@OneToMany(mappedBy="processo")
+	@OneToMany
+	@JoinColumn(name="numProcesso")
 	private List<ProcessoTipoParte> processoTipoPartes;
 	
-	//bi-directional many-to-one association to AssuntoProcesso
-	@OneToMany(mappedBy="processo")
+	@OneToMany
+	@JoinColumn(name="numProcesso")
 	private List<AssuntoProcesso> assuntoProcessos;
 
 	public Processo() {
 	}
 
-	public long getNumProcesso() {
+	public Long getNumProcesso() {
 		return this.numProcesso;
 	}
 
@@ -142,7 +143,7 @@ public class Processo implements Serializable {
 		this.numProcesso = numProcesso;
 	}
 
-	public short getCodAcao() {
+	public Short getCodAcao() {
 		return this.codAcao;
 	}
 
@@ -150,7 +151,7 @@ public class Processo implements Serializable {
 		this.codAcao = codAcao;
 	}
 
-	public short getCodCategoria() {
+	public Short getCodCategoria() {
 		return this.codCategoria;
 	}
 
@@ -158,7 +159,7 @@ public class Processo implements Serializable {
 		this.codCategoria = codCategoria;
 	}
 
-	public int getCodClasse() {
+	public Integer getCodClasse() {
 		return this.codClasse;
 	}
 
@@ -166,7 +167,7 @@ public class Processo implements Serializable {
 		this.codClasse = codClasse;
 	}
 
-	public short getCodClasseCNJ() {
+	public Short getCodClasseCNJ() {
 		return this.codClasseCNJ;
 	}
 
@@ -174,7 +175,7 @@ public class Processo implements Serializable {
 		this.codClasseCNJ = codClasseCNJ;
 	}
 
-	public int getCodCompetencia() {
+	public Integer getCodCompetencia() {
 		return this.codCompetencia;
 	}
 
@@ -182,7 +183,7 @@ public class Processo implements Serializable {
 		this.codCompetencia = codCompetencia;
 	}
 
-	public int getCodDestino() {
+	public Integer getCodDestino() {
 		return this.codDestino;
 	}
 
@@ -190,7 +191,7 @@ public class Processo implements Serializable {
 		this.codDestino = codDestino;
 	}
 
-	public int getCodFase() {
+	public Integer getCodFase() {
 		return this.codFase;
 	}
 
@@ -198,7 +199,7 @@ public class Processo implements Serializable {
 		this.codFase = codFase;
 	}
 
-	public int getCodMovimento() {
+	public Integer getCodMovimento() {
 		return this.codMovimento;
 	}
 
@@ -206,7 +207,7 @@ public class Processo implements Serializable {
 		this.codMovimento = codMovimento;
 	}
 
-	public short getCodMovimentoRelevante() {
+	public Short getCodMovimentoRelevante() {
 		return this.codMovimentoRelevante;
 	}
 
@@ -214,7 +215,7 @@ public class Processo implements Serializable {
 		this.codMovimentoRelevante = codMovimentoRelevante;
 	}
 
-	public short getCodTipoProcesso() {
+	public Short getCodTipoProcesso() {
 		return this.codTipoProcesso;
 	}
 
@@ -222,11 +223,11 @@ public class Processo implements Serializable {
 		this.codTipoProcesso = codTipoProcesso;
 	}
 
-	public long getCodUsuario() {
+	public Long getCodUsuario() {
 		return this.codUsuario;
 	}
 
-	public void setCodUsuario(long codUsuario) {
+	public void setCodUsuario(Long codUsuario) {
 		this.codUsuario = codUsuario;
 	}
 
@@ -342,7 +343,7 @@ public class Processo implements Serializable {
 		this.numProcOrigem = numProcOrigem;
 	}
 
-	public int getSeqMovimento() {
+	public Integer getSeqMovimento() {
 		return this.seqMovimento;
 	}
 
@@ -350,7 +351,7 @@ public class Processo implements Serializable {
 		this.seqMovimento = seqMovimento;
 	}
 
-	public int getSeqMovimentoRelevante() {
+	public Integer getSeqMovimentoRelevante() {
 		return this.seqMovimentoRelevante;
 	}
 
@@ -358,7 +359,7 @@ public class Processo implements Serializable {
 		this.seqMovimentoRelevante = seqMovimentoRelevante;
 	}
 
-	public short getTpOrigem() {
+	public Short getTpOrigem() {
 		return this.tpOrigem;
 	}
 

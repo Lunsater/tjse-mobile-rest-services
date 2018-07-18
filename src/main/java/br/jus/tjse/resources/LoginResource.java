@@ -33,19 +33,16 @@ public class LoginResource {
 		try {
 			login = new ObjectMapper().readValue(loginStr, LoginUsuario.class);
 		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
-		Usuario usuario = usuarioDAO.getUsuarioPorLogin(login.getUsuario());
+		Usuario usuario = usuarioDAO.obterUsuarioPorLogin(login.getUsuario());
 		if (usuario == null)
-			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Usu·rio n„o encontrado!").build();
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Usu√°rio n√£o encontrado!").build();
 		
 		if (senhaConfere(usuario.getSenha(), login.getSenha()))
 			return Response.status(Response.Status.OK).entity(usuario.getNome()).build();
@@ -62,19 +59,16 @@ public class LoginResource {
 		try {
 			login = new ObjectMapper().readValue(loginStr, LoginAdvogado.class);
 		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		AdvogadoDAO advogadoDAO = new AdvogadoDAO();
-		Advogado advogado = advogadoDAO.getAdvogadoPorOAB(login.getCodigo(), login.getLetra(), login.getUf());
+		Advogado advogado = advogadoDAO.obterAdvogadoPorOAB(login.getCodigo(), login.getLetra(), login.getUf());
 		if (advogado == null)
-			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Advogado n„o encontrado!").build();
+			return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity("Advogado n√£o encontrado!").build();
 		
 		if (senhaConfere(advogado.getCodSenhaInternet(), login.getSenha()))
 			return Response.status(Response.Status.OK).entity(advogado.getNomeAdvogado()).build();
@@ -87,7 +81,6 @@ public class LoginResource {
 		try {
 			senhaMD5 = Util.geradorMD5(senhaDigitada);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
 		} 

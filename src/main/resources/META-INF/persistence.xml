@@ -15,6 +15,7 @@
 		<class>br.jus.tjse.model.ProcessoTipoPartePK</class>
 		<class>br.jus.tjse.model.AssuntoProcesso</class>
 		<class>br.jus.tjse.model.AssuntoProcessoPK</class>
+		<class>br.jus.tjse.model.Assunto</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Cache71Dialect" />

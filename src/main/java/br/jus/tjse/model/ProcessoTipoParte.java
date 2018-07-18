@@ -1,7 +1,6 @@
 package br.jus.tjse.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
@@ -27,27 +26,16 @@ public class ProcessoTipoParte implements Serializable {
 	private ProcessoTipoPartePK id;
 
 	@Column(name="codEndereco")
-	private int codEndereco;
+	private Integer codEndereco;
 
 	@Column(name="codRepresentante")
-	private int codRepresentante;
-
-	@Column(name="codUsuarioDesvinculacao")
-	private int codUsuarioDesvinculacao;
-
-	@Column(name="dtDesvinculacao")
-	private Timestamp dtDesvinculacao;
+	private Integer codRepresentante;
 
 	@Column(name="flgMenor")
 	private String flgMenor;
 
-	//bi-directional many-to-one association to Processo
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="numProcesso", referencedColumnName = "numProcesso", insertable=false, updatable=false)
-	private Processo processo;
-
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="codParte", referencedColumnName = "codParte", insertable=false, updatable=false)
+	@JoinColumn(name="codParte", insertable=false, updatable=false)
 	private Parte parte;
 
 	public ProcessoTipoParte() {
@@ -61,36 +49,20 @@ public class ProcessoTipoParte implements Serializable {
 		this.id = id;
 	}
 
-	public int getCodEndereco() {
+	public Integer getCodEndereco() {
 		return this.codEndereco;
 	}
 
-	public void setCodEndereco(int codEndereco) {
+	public void setCodEndereco(Integer codEndereco) {
 		this.codEndereco = codEndereco;
 	}
 
-	public int getCodRepresentante() {
+	public Integer getCodRepresentante() {
 		return this.codRepresentante;
 	}
 
-	public void setCodRepresentante(int codRepresentante) {
+	public void setCodRepresentante(Integer codRepresentante) {
 		this.codRepresentante = codRepresentante;
-	}
-
-	public int getCodUsuarioDesvinculacao() {
-		return this.codUsuarioDesvinculacao;
-	}
-
-	public void setCodUsuarioDesvinculacao(int codUsuarioDesvinculacao) {
-		this.codUsuarioDesvinculacao = codUsuarioDesvinculacao;
-	}
-
-	public Timestamp getDtDesvinculacao() {
-		return this.dtDesvinculacao;
-	}
-
-	public void setDtDesvinculacao(Timestamp dtDesvinculacao) {
-		this.dtDesvinculacao = dtDesvinculacao;
 	}
 
 	public String getFlgMenor() {
@@ -99,14 +71,6 @@ public class ProcessoTipoParte implements Serializable {
 
 	public void setFlgMenor(String flgMenor) {
 		this.flgMenor = flgMenor;
-	}
-
-	public Processo getProcesso() {
-		return this.processo;
-	}
-
-	public void setProcesso(Processo processo) {
-		this.processo = processo;
 	}
 
 }

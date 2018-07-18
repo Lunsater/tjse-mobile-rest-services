@@ -14,10 +14,10 @@ public class AssuntoProcessoPK implements Serializable {
 	//default serial version id, required for serializable classes.
 	private static final long serialVersionUID = 1L;
 
-	@Column(name="numProcesso", insertable=false, updatable=false)
+	@Column(name="numProcesso")
 	private long numProcesso;
 
-	@Column(name="codAssunto", insertable=false, updatable=false)
+	@Column(name="codAssunto")
 	private int codAssunto;
 
 	public AssuntoProcessoPK() {

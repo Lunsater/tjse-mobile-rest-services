@@ -2,16 +2,13 @@ package br.jus.tjse.model;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -22,26 +19,26 @@ import javax.persistence.TemporalType;
  * 
  */
 @Entity
-@Table(name="Assunto")
+@Table(name="Assunto", schema="CNJ")
 @NamedQuery(name="Assunto.findAll", query="SELECT a FROM Assunto a")
 public class Assunto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column(name="codAssunto")
-	private int codAssunto;
+	private Integer codAssunto;
 
 	@Column(name="alteracaoDescricao")
-	private int alteracaoDescricao;
+	private Integer alteracaoDescricao;
 
-	@Column(name="codAssuntoRaiz")
-	private int codAssuntoRaiz;
+	@ManyToOne
+	@JoinColumn(name="codAssuntoRaiz", referencedColumnName="codAssunto")
+	private Assunto assuntoRaiz;
 
-	@Column(name="codAssuntoSuperior")
-	private int codAssuntoSuperior;
+	private Integer codAssuntoSuperior;
 
 	@Column(name="depreciado")
-	private int depreciado;
+	private Integer depreciado;
 
 	@Column(name="dsAssunto")
 	private String dsAssunto;
@@ -61,60 +58,48 @@ public class Assunto implements Serializable {
 	private String flgAssuntoTree;
 
 	@Column(name="numRevisao")
-	private int numRevisao;
-
-	//bi-directional many-to-one association to Assunto
-	@ManyToOne
-	@JoinColumns({
-		@JoinColumn(name="numProcesso", referencedColumnName = "numProcesso"),
-		@JoinColumn(name="codAssunto", referencedColumnName = "codAssunto")
-		})
-	private Assunto assunto;
-
-	//bi-directional many-to-one association to Assunto
-	@OneToMany(mappedBy="assunto")
-	private List<Assunto> assuntos;
+	private Integer numRevisao;
 
 	public Assunto() {
 	}
 
-	public int getCodAssunto() {
+	public Integer getCodAssunto() {
 		return this.codAssunto;
 	}
 
-	public void setCodAssunto(int codAssunto) {
+	public void setCodAssunto(Integer codAssunto) {
 		this.codAssunto = codAssunto;
 	}
 
-	public int getAlteracaoDescricao() {
+	public Integer getAlteracaoDescricao() {
 		return this.alteracaoDescricao;
 	}
 
-	public void setAlteracaoDescricao(int alteracaoDescricao) {
+	public void setAlteracaoDescricao(Integer alteracaoDescricao) {
 		this.alteracaoDescricao = alteracaoDescricao;
 	}
 
-	public int getCodAssuntoRaiz() {
-		return this.codAssuntoRaiz;
+	public Assunto getAssuntoRaiz() {
+		return this.assuntoRaiz;
 	}
 
-	public void setCodAssuntoRaiz(int codAssuntoRaiz) {
-		this.codAssuntoRaiz = codAssuntoRaiz;
+	public void setAssuntoRaiz(Assunto assuntoRaiz) {
+		this.assuntoRaiz = assuntoRaiz;
 	}
 
-	public int getCodAssuntoSuperior() {
+	public Integer getCodAssuntoSuperior() {
 		return this.codAssuntoSuperior;
 	}
 
-	public void setCodAssuntoSuperior(int codAssuntoSuperior) {
+	public void setCodAssuntoSuperior(Integer codAssuntoSuperior) {
 		this.codAssuntoSuperior = codAssuntoSuperior;
 	}
 
-	public int getDepreciado() {
+	public Integer getDepreciado() {
 		return this.depreciado;
 	}
 
-	public void setDepreciado(int depreciado) {
+	public void setDepreciado(Integer depreciado) {
 		this.depreciado = depreciado;
 	}
 
@@ -158,42 +143,12 @@ public class Assunto implements Serializable {
 		this.flgAssuntoTree = flgAssuntoTree;
 	}
 
-	public int getNumRevisao() {
+	public Integer getNumRevisao() {
 		return this.numRevisao;
 	}
 
-	public void setNumRevisao(int numRevisao) {
+	public void setNumRevisao(Integer numRevisao) {
 		this.numRevisao = numRevisao;
-	}
-
-	public Assunto getAssunto() {
-		return this.assunto;
-	}
-
-	public void setAssunto(Assunto assunto) {
-		this.assunto = assunto;
-	}
-
-	public List<Assunto> getAssuntos() {
-		return this.assuntos;
-	}
-
-	public void setAssuntos(List<Assunto> assuntos) {
-		this.assuntos = assuntos;
-	}
-
-	public Assunto addAssunto(Assunto assunto) {
-		getAssuntos().add(assunto);
-		assunto.setAssunto(this);
-
-		return assunto;
-	}
-
-	public Assunto removeAssunto(Assunto assunto) {
-		getAssuntos().remove(assunto);
-		assunto.setAssunto(null);
-
-		return assunto;
 	}
 
 }
