@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -42,8 +43,9 @@ public class Processo implements Serializable {
 	@Column(name="codClasseCNJ")
 	private Short codClasseCNJ;
 
-	@Column(name="codCompetencia")
-	private Integer codCompetencia;
+	@ManyToOne
+	@JoinColumn(name="codCompetencia")
+	private Competencia competencia;
 
 	@Column(name="codDestino")
 	private Integer codDestino;
@@ -175,12 +177,12 @@ public class Processo implements Serializable {
 		this.codClasseCNJ = codClasseCNJ;
 	}
 
-	public Integer getCodCompetencia() {
-		return this.codCompetencia;
+	public Competencia getCompetencia() {
+		return this.competencia;
 	}
 
-	public void setCodCompetencia(int codCompetencia) {
-		this.codCompetencia = codCompetencia;
+	public void setCompetencia(Competencia competencia) {
+		this.competencia = competencia;
 	}
 
 	public Integer getCodDestino() {
