@@ -54,6 +54,8 @@ public class ProcessoResource {
 		MovimentoProcessoDAO movimentoProcessoDAO = new MovimentoProcessoDAO();
 		List<MovimentoProcesso> decisoes = movimentoProcessoDAO.obterMovimentoProcessoDecisao(processo.getNumProcesso().toString()); 
 		procResp.setQtdDecisoes(decisoes.size());
+		List<MovimentoProcesso> movimentos = movimentoProcessoDAO.obterMovimentoProcesso(processo.getNumProcesso().toString());
+		procResp.setQtdMovimentos(movimentos.size());
 		
 		ProcessoTipoParteDAO processoTipoParteDAO = new ProcessoTipoParteDAO();
 		List<ProcessoTipoParte> processoTipoPartes = processoTipoParteDAO.obterPartes(processo.getNumProcesso().toString());

@@ -23,4 +23,11 @@ public class MovimentoProcessoDAO {
 		qry.setParameter("numProcesso", Long.parseLong(numProcesso));
 		return qry.getResultList();
 	}
+	
+	public List<MovimentoProcesso> obterMovimentoProcesso(String numProcesso) {
+		String sql = "from MovimentoProcesso mp where mp.id.numProcesso = :numProcesso";
+		TypedQuery<MovimentoProcesso> qry = entityManager.createQuery(sql, MovimentoProcesso.class);
+		qry.setParameter("numProcesso", Long.parseLong(numProcesso));
+		return qry.getResultList();
+	}
 }

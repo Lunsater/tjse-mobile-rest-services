@@ -3,8 +3,11 @@
 	<Resource name="BeanManager" auth="Container"
 		type="javax.enterprise.inject.spi.BeanManager" factory="org.jboss.weld.resources.ManagerObjectFactory" />
 
+	<!-- <ResourceLink global="jdbc/cacheapp" name="jdbc/cacheapp"
+		type="javax.sql.DataSource" password="123456" username="postgres" /> -->
+		
 	<ResourceLink global="jdbc/cacheapp" name="jdbc/cacheapp"
-		type="javax.sql.DataSource" password="123456" username="postgres" />
+		type="javax.sql.DataSource" password="ws1ntcnj_bnmp" username="WSINTCNJ_BNMP" />
 
 </Context>
 

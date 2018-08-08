@@ -9,9 +9,10 @@ public class ProcessoResponse {
 	private String numUnico;
 	private String assunto;
 	private String competencia;
+	private Integer qtdMovimentos;
 	private String ultimaFase;
 	private Integer qtdFases;
-	private Integer qtdDecisoes;
+	private Integer qtdDecisoes;	
 	private Integer qtdPartes;
 
 	public Date getDataDistribuicao() {
@@ -43,6 +44,12 @@ public class ProcessoResponse {
 	}
 	public void setCompetencia(String competencia) {
 		this.competencia = competencia;
+	}
+	public Integer getQtdMovimentos() {
+		return qtdMovimentos;
+	}
+	public void setQtdMovimentos(Integer qtdMovimentos) {
+		this.qtdMovimentos = qtdMovimentos;
 	}
 	public String getUltimaFase() {
 		return ultimaFase;

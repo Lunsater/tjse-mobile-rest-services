@@ -21,7 +21,7 @@ public class Movimento implements Serializable {
 
 	@Id
 	@Column(name="codMovimento")
-	private int codMovimento;
+	private Integer codMovimento;
 
 	@Column(name="dsMovimento")
 	private String dsMovimento;
@@ -36,16 +36,16 @@ public class Movimento implements Serializable {
 	private String flgRelevante;
 
 	@Column(name="idMovimentoCNJ")
-	private int idMovimentoCNJ;
+	private Integer idMovimentoCNJ;
 
 	public Movimento() {
 	}
 
-	public int getCodMovimento() {
+	public Integer getCodMovimento() {
 		return this.codMovimento;
 	}
 
-	public void setCodMovimento(int codMovimento) {
+	public void setCodMovimento(Integer codMovimento) {
 		this.codMovimento = codMovimento;
 	}
 
@@ -81,11 +81,11 @@ public class Movimento implements Serializable {
 		this.flgRelevante = flgRelevante;
 	}
 
-	public int getIdMovimentoCNJ() {
+	public Integer getIdMovimentoCNJ() {
 		return this.idMovimentoCNJ;
 	}
 
-	public void setIdMovimentoCNJ(int idMovimentoCNJ) {
+	public void setIdMovimentoCNJ(Integer idMovimentoCNJ) {
 		this.idMovimentoCNJ = idMovimentoCNJ;
 	}
 
