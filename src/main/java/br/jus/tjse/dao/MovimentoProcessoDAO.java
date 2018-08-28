@@ -25,7 +25,10 @@ public class MovimentoProcessoDAO {
 	}
 	
 	public List<MovimentoProcesso> obterMovimentoProcesso(String numProcesso) {
-		String sql = "from MovimentoProcesso mp where mp.id.numProcesso = :numProcesso";
+		//String sql = "select m.id.dtMovimento, m.txtMovimento, txtIntegra, m.flgSigiloso "
+		String sql = "from MovimentoProcesso mp "
+				+ "where mp.id.numProcesso = :numProcesso "
+				+ "order by mp.id.dtMovimento desc";
 		TypedQuery<MovimentoProcesso> qry = entityManager.createQuery(sql, MovimentoProcesso.class);
 		qry.setParameter("numProcesso", Long.parseLong(numProcesso));
 		return qry.getResultList();
