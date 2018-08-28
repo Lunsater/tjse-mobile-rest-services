@@ -25,6 +25,12 @@
 		<class>br.jus.tjse.model.Movimento</class>
 		<class>br.jus.tjse.model.MovimentoProcesso</class>
 		<class>br.jus.tjse.model.MovimentoProcessoPK</class>
+		<class>br.jus.tjse.model.AnexosMovimento</class>
+		<class>br.jus.tjse.model.AnexosMovimentoPK</class>
+		<class>br.jus.tjse.model.ProcessoParteOAB</class>
+		<class>br.jus.tjse.model.ProcessoParteOABPK</class>
+		<class>br.jus.tjse.model.TipoAtuacaoAdv</class>
+		<class>br.jus.tjse.model.TipoParte</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.Cache71Dialect" />

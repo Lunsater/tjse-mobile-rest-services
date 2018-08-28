@@ -2,13 +2,16 @@ package br.jus.tjse.model;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -152,6 +155,15 @@ public class MovimentoProcesso implements Serializable {
 
 	@Column(name="txtMovimento")
 	private String txtMovimento;
+	
+	@OneToMany
+	@JoinColumns({
+		@JoinColumn(name="numProcesso", referencedColumnName="numProcesso"),
+		@JoinColumn(name="codMovimento", referencedColumnName="codMovimento"),
+		@JoinColumn(name="dtMovimento", referencedColumnName="dtMovimento"),
+		@JoinColumn(name="seqMovimento", referencedColumnName="seqMovimento")
+	})
+	List<AnexosMovimento> anexosMovimentos;
 
 	public MovimentoProcesso() {
 	}
@@ -474,6 +486,14 @@ public class MovimentoProcesso implements Serializable {
 
 	public void setTxtMovimento(String txtMovimento) {
 		this.txtMovimento = txtMovimento;
+	}
+
+	public List<AnexosMovimento> getAnexosMovimentos() {
+		return anexosMovimentos;
+	}
+
+	public void setAnexosMovimentos(List<AnexosMovimento> anexosMovimentos) {
+		this.anexosMovimentos = anexosMovimentos;
 	}
 
 }

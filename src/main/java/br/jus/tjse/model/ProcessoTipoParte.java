@@ -37,6 +37,10 @@ public class ProcessoTipoParte implements Serializable {
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="codParte", insertable=false, updatable=false)
 	private Parte parte;
+	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="codTipoParte", insertable=false, updatable=false)
+	private TipoParte tipoParte;
 
 	public ProcessoTipoParte() {
 	}
@@ -71,6 +75,22 @@ public class ProcessoTipoParte implements Serializable {
 
 	public void setFlgMenor(String flgMenor) {
 		this.flgMenor = flgMenor;
+	}
+
+	public Parte getParte() {
+		return parte;
+	}
+
+	public void setParte(Parte parte) {
+		this.parte = parte;
+	}
+
+	public TipoParte getTipoParte() {
+		return tipoParte;
+	}
+
+	public void setTipoParte(TipoParte tipoParte) {
+		this.tipoParte = tipoParte;
 	}
 
 }
