@@ -18,7 +18,8 @@ public class FaseProcessoDAO {
 	}
 	
 	public List<FaseProcesso> obterFasesProcesso(String numProcesso) {
-		String sql = "from FaseProcesso where id.numProcesso = :numProcesso";
+		String sql = "from FaseProcesso f where f.id.numProcesso = :numProcesso "
+				+ "order by f.id.dtMovimento desc";
 		TypedQuery<FaseProcesso> qry = entityManager.createQuery(sql, FaseProcesso.class);
 		qry.setParameter("numProcesso", Long.parseLong(numProcesso));
 		return qry.getResultList();  
