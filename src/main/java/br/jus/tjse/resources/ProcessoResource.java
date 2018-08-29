@@ -15,6 +15,7 @@ import br.jus.tjse.dao.MovimentoProcessoDAO;
 import br.jus.tjse.dao.NumeracaoUnicaDAO;
 import br.jus.tjse.dao.ProcessoDAO;
 import br.jus.tjse.dao.ProcessoTipoParteDAO;
+import br.jus.tjse.dominio.MovimentoResponse;
 import br.jus.tjse.dominio.ProcessoResponse;
 import br.jus.tjse.model.AssuntoProcesso;
 import br.jus.tjse.model.FaseProcesso;
@@ -54,8 +55,8 @@ public class ProcessoResource {
 		MovimentoProcessoDAO movimentoProcessoDAO = new MovimentoProcessoDAO();
 		List<MovimentoProcesso> decisoes = movimentoProcessoDAO.obterMovimentoProcessoDecisao(processo.getNumProcesso().toString()); 
 		procResp.setQtdDecisoes(decisoes.size());
-		List<MovimentoProcesso> movimentos = movimentoProcessoDAO.obterMovimentoProcesso(processo.getNumProcesso().toString());
-		procResp.setQtdMovimentos(movimentos.size());
+		MovimentoResponse movimentoResponse = movimentoProcessoDAO.obterMovimentoProcesso(processo.getNumProcesso().toString());
+		procResp.setQtdMovimentos(movimentoResponse.getListaMovimentos().size());
 		
 		ProcessoTipoParteDAO processoTipoParteDAO = new ProcessoTipoParteDAO();
 		List<ProcessoTipoParte> processoTipoPartes = processoTipoParteDAO.obterPartes(processo.getNumProcesso().toString());

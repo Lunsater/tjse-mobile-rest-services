@@ -24,21 +24,11 @@ public class MovimentoProcessoResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response buscaMovimentos(@PathParam("id") String numeroProcesso) {
 		MovimentoProcessoDAO movimentoProcessoDAO = new MovimentoProcessoDAO();
-		List<MovimentoProcesso> listaMovimentos = movimentoProcessoDAO.obterMovimentoProcesso(numeroProcesso);
-		if (listaMovimentos != null && !listaMovimentos.isEmpty()) {
-			MovimentoResponse movimentoResponse = new MovimentoResponse();
-			movimentoResponse.setNumProcesso(numeroProcesso);
-			for (MovimentoProcesso mp : listaMovimentos) {				
-				DadosMovimento dadosMovimento = new DadosMovimento();
-				dadosMovimento.setDataMovimento(mp.getId().getDtMovimento());
-				dadosMovimento.setTxtMovimento(mp.getTxtMovimento());
-				dadosMovimento.setTxtIntegra(mp.getTxtIntegra());
-				dadosMovimento.setFlgSilgiloso(mp.getFlgSigiloso());
-				movimentoResponse.getListaMovimentos().add(dadosMovimento);
-			}
+		MovimentoResponse movimentoResponse = movimentoProcessoDAO.obterMovimentoProcesso(numeroProcesso);
+		if (movimentoResponse != null)
 			return Response.status(Response.Status.OK).entity(movimentoResponse).build();
-		}
-		return Response.status(Response.Status.OK).entity("Nenhum movimento encontrado.").build();
+		else
+			return Response.status(Response.Status.OK).entity("Nenhum movimento encontrado.").build();
 	}
 	
 	@GET
@@ -56,7 +46,7 @@ public class MovimentoProcessoResource {
 				dadosMovimento.setDataMovimento(mp.getId().getDtMovimento());
 				dadosMovimento.setTxtMovimento(mp.getTxtMovimento());
 				dadosMovimento.setTxtIntegra(mp.getTxtIntegra());
-				dadosMovimento.setFlgSilgiloso(mp.getFlgSigiloso());
+				dadosMovimento.setFlgSigiloso(mp.getFlgSigiloso());
 				movimentoResponse.getListaMovimentos().add(dadosMovimento);
 			}
 			return Response.status(Response.Status.OK).entity(movimentoResponse).build();

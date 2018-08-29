@@ -26,7 +26,7 @@ public class AnexosMovimento implements Serializable {
 	private AnexosMovimentoPK id;
 
 	@Column(name="arquivo")
-	private Object arquivo;
+	private byte[] arquivo;
 
 	@Column(name="codUsuario")
 	private java.math.BigDecimal codUsuario;
@@ -83,11 +83,11 @@ public class AnexosMovimento implements Serializable {
 		this.id = id;
 	}
 
-	public Object getArquivo() {
+	public byte[] getArquivo() {
 		return this.arquivo;
 	}
 
-	public void setArquivo(Object arquivo) {
+	public void setArquivo(byte[] arquivo) {
 		this.arquivo = arquivo;
 	}
 
