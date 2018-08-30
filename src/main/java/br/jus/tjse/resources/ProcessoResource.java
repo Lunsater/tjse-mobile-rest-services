@@ -15,11 +15,10 @@ import br.jus.tjse.dao.MovimentoProcessoDAO;
 import br.jus.tjse.dao.NumeracaoUnicaDAO;
 import br.jus.tjse.dao.ProcessoDAO;
 import br.jus.tjse.dao.ProcessoTipoParteDAO;
+import br.jus.tjse.dominio.FaseResponse;
 import br.jus.tjse.dominio.MovimentoResponse;
 import br.jus.tjse.dominio.ProcessoResponse;
 import br.jus.tjse.model.AssuntoProcesso;
-import br.jus.tjse.model.FaseProcesso;
-import br.jus.tjse.model.MovimentoProcesso;
 import br.jus.tjse.model.Processo;
 import br.jus.tjse.model.ProcessoTipoParte;
 
@@ -47,14 +46,20 @@ public class ProcessoResource {
 		procResp.setAssunto(obterAssuntoPrincipal(processo.getAssuntoProcessos()));
 		
 		FaseProcessoDAO faseProcessoDAO = new FaseProcessoDAO();
-		List<FaseProcesso> fases = faseProcessoDAO.obterFasesProcesso(processo.getNumProcesso().toString());
-		if (fases.size() > 0)
-			procResp.setUltimaFase(fases.get(fases.size()-1).getFase().getDsFase());
-		procResp.setQtdFases(fases.size());
+		FaseResponse fases = faseProcessoDAO.obterFasesProcesso(processo.getNumProcesso().toString());
+		if (fases != null && fases.getListaFases().size() > 0) {
+			procResp.setUltimaFase(fases.getListaFases().get(fases.getListaFases().size()-1).getDescricao());
+			procResp.setQtdFases(fases.getListaFases().size());
+		} else {
+			procResp.setUltimaFase("");
+			procResp.setQtdFases(0);
+		}
 		
 		MovimentoProcessoDAO movimentoProcessoDAO = new MovimentoProcessoDAO();
-		List<MovimentoProcesso> decisoes = movimentoProcessoDAO.obterMovimentoProcessoDecisao(processo.getNumProcesso().toString()); 
-		procResp.setQtdDecisoes(decisoes.size());
+		MovimentoResponse decisoes = movimentoProcessoDAO.obterMovimentoProcessoDecisao(processo.getNumProcesso().toString()); 
+		if (decisoes != null)
+			procResp.setQtdDecisoes(decisoes.getListaMovimentos().size());
+		
 		MovimentoResponse movimentoResponse = movimentoProcessoDAO.obterMovimentoProcesso(processo.getNumProcesso().toString());
 		procResp.setQtdMovimentos(movimentoResponse.getListaMovimentos().size());
 		

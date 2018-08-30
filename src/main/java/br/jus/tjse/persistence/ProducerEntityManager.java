@@ -7,10 +7,14 @@ import javax.persistence.Persistence;
 
 public class ProducerEntityManager {
 
-	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("tjse-unit-default-api");
+	private EntityManagerFactory factory = Persistence.createEntityManagerFactory("tjse-unit-default-api");
+	private static EntityManager entityManager;
 	
 	public EntityManager getEntityManager() {
-		return factory.createEntityManager();
+		if (entityManager == null) 
+			entityManager = factory.createEntityManager(); 
+
+		return entityManager;
 	}
 	
 	public void close(EntityManager entityManager) {

@@ -1,7 +1,5 @@
 package br.jus.tjse.resources;
 
-import java.util.List;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -11,9 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 import br.jus.tjse.dao.MovimentoProcessoDAO;
-import br.jus.tjse.dominio.DadosMovimento;
 import br.jus.tjse.dominio.MovimentoResponse;
-import br.jus.tjse.model.MovimentoProcesso;
 
 @Path("/movimento")
 public class MovimentoProcessoResource {
@@ -37,20 +33,10 @@ public class MovimentoProcessoResource {
 	@Produces(MediaType.APPLICATION_JSON)
 	public Response buscaMovimentosDecisao(@PathParam("id") String numeroProcesso) {
 		MovimentoProcessoDAO movimentoProcessoDAO = new MovimentoProcessoDAO();
-		List<MovimentoProcesso> listaMovimentos = movimentoProcessoDAO.obterMovimentoProcessoDecisao(numeroProcesso);
-		if (listaMovimentos != null && !listaMovimentos.isEmpty()) {
-			MovimentoResponse movimentoResponse = new MovimentoResponse();
-			movimentoResponse.setNumProcesso(numeroProcesso);
-			for (MovimentoProcesso mp : listaMovimentos) {				
-				DadosMovimento dadosMovimento = new DadosMovimento();
-				dadosMovimento.setDataMovimento(mp.getId().getDtMovimento());
-				dadosMovimento.setTxtMovimento(mp.getTxtMovimento());
-				dadosMovimento.setTxtIntegra(mp.getTxtIntegra());
-				dadosMovimento.setFlgSigiloso(mp.getFlgSigiloso());
-				movimentoResponse.getListaMovimentos().add(dadosMovimento);
-			}
+		MovimentoResponse movimentoResponse = movimentoProcessoDAO.obterMovimentoProcessoDecisao(numeroProcesso);
+		if (movimentoResponse != null)
 			return Response.status(Response.Status.OK).entity(movimentoResponse).build();
-		}
+		
 		return Response.status(Response.Status.OK).entity("Nenhuma decisão encontrada.").build();
 	}
 

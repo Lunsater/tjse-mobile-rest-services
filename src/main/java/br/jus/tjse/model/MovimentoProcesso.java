@@ -156,6 +156,7 @@ public class MovimentoProcesso implements Serializable {
 	@Column(name="txtMovimento")
 	private String txtMovimento;
 	
+	
 	@OneToMany
 	@JoinColumns({
 		@JoinColumn(name="numProcesso", referencedColumnName="numProcesso"),
@@ -164,6 +165,7 @@ public class MovimentoProcesso implements Serializable {
 		@JoinColumn(name="seqMovimento", referencedColumnName="seqMovimento")
 	})
 	List<AnexosMovimento> anexosMovimentos;
+	
 
 	public MovimentoProcesso() {
 	}
@@ -488,6 +490,7 @@ public class MovimentoProcesso implements Serializable {
 		this.txtMovimento = txtMovimento;
 	}
 
+	
 	public List<AnexosMovimento> getAnexosMovimentos() {
 		return anexosMovimentos;
 	}
@@ -495,5 +498,5 @@ public class MovimentoProcesso implements Serializable {
 	public void setAnexosMovimentos(List<AnexosMovimento> anexosMovimentos) {
 		this.anexosMovimentos = anexosMovimentos;
 	}
-
+	
 }

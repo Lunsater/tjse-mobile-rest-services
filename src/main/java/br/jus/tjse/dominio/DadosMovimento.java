@@ -1,11 +1,6 @@
 package br.jus.tjse.dominio;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
-
-import br.jus.tjse.model.AnexosMovimento;
 
 public class DadosMovimento {
 	
@@ -13,20 +8,20 @@ public class DadosMovimento {
 	private String txtMovimento;
 	private String txtIntegra;
 	private String flgSigiloso;
-	private List<AnexosMovimento> listaAnexosMovimento;
+	private Boolean temAnexo = false;
 	
 	public DadosMovimento() {
 		
 	}
 	
 	public DadosMovimento(Date dataMovimento, String txtMovimento, String txtIntegra, String flgSilgiloso,
-			Collection<AnexosMovimento> listaAnexosMovimento) {
+			Boolean temAnexo) {
 		super();
 		this.dataMovimento = dataMovimento;
 		this.txtMovimento = txtMovimento;
 		this.txtIntegra = txtIntegra;
 		this.flgSigiloso = flgSilgiloso;
-		this.listaAnexosMovimento = (List<AnexosMovimento>) listaAnexosMovimento;
+		this.temAnexo = temAnexo;
 	}
 	
 	public Date getDataMovimento() {
@@ -53,15 +48,12 @@ public class DadosMovimento {
 	public void setFlgSigiloso(String flgSigiloso) {
 		this.flgSigiloso = flgSigiloso;
 	}
-	
-	public List<AnexosMovimento> getListaAnexosMovimento() {
-		if (listaAnexosMovimento == null) {
-			listaAnexosMovimento = new ArrayList<AnexosMovimento>();
-		}
-		return listaAnexosMovimento;
+
+	public Boolean getTemAnexo() {
+		return temAnexo;
 	}
-	public void setListaAnexosMovimento(List<AnexosMovimento> listaAnexosMovimento) {
-		this.listaAnexosMovimento = listaAnexosMovimento;
-	}
-	
+
+	public void setTemAnexo(Boolean temAnexo) {
+		this.temAnexo = temAnexo;
+	}	
 }

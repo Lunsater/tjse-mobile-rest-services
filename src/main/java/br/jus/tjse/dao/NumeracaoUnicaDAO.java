@@ -19,7 +19,7 @@ public class NumeracaoUnicaDAO {
 		String sql = "from NumeracaoUnica nu where nu.id.numProcesso = :numProcesso";
 		TypedQuery<NumeracaoUnica> qry = entityManager.createQuery(sql, NumeracaoUnica.class);
 		qry.setParameter("numProcesso", Long.parseLong(numProcesso));
-		return qry.getSingleResult();		
+		return qry.getSingleResult();
 	}
 
 }
