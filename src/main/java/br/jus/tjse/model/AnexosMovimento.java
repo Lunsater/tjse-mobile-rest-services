@@ -20,6 +20,7 @@ import javax.persistence.TemporalType;
 @Table(name="AnexosMovimento", schema="Pgrau")
 @NamedQuery(name="AnexosMovimento.findAll", query="SELECT a FROM AnexosMovimento a")
 public class AnexosMovimento implements Serializable {
+	
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
@@ -32,7 +33,7 @@ public class AnexosMovimento implements Serializable {
 	private java.math.BigDecimal codUsuario;
 
 	@Column(name="codUsuarioLeitura")
-	private long codUsuarioLeitura;
+	private Long codUsuarioLeitura;
 
 	@Column(name="dsArquivo")
 	private String dsArquivo;
@@ -58,19 +59,19 @@ public class AnexosMovimento implements Serializable {
 	private String idAnexo;
 
 	@Column(name="idAssinatura")
-	private int idAssinatura;
+	private Integer idAssinatura;
 
 	@Column(name="nmArquivo")
 	private String nmArquivo;
 
 	@Column(name="seqAssinaturaEletronica")
-	private long seqAssinaturaEletronica;
+	private Long seqAssinaturaEletronica;
 
 	@Column(name="tamanhoAnexo")
-	private int tamanhoAnexo;
+	private Integer tamanhoAnexo;
 
 	@Column(name="tipoAnexo")
-	private int tipoAnexo;
+	private Integer tipoAnexo;
 
 	public AnexosMovimento() {
 	}
@@ -99,11 +100,11 @@ public class AnexosMovimento implements Serializable {
 		this.codUsuario = codUsuario;
 	}
 
-	public long getCodUsuarioLeitura() {
+	public Long getCodUsuarioLeitura() {
 		return this.codUsuarioLeitura;
 	}
 
-	public void setCodUsuarioLeitura(long codUsuarioLeitura) {
+	public void setCodUsuarioLeitura(Long codUsuarioLeitura) {
 		this.codUsuarioLeitura = codUsuarioLeitura;
 	}
 
@@ -163,11 +164,11 @@ public class AnexosMovimento implements Serializable {
 		this.idAnexo = idAnexo;
 	}
 
-	public int getIdAssinatura() {
+	public Integer getIdAssinatura() {
 		return this.idAssinatura;
 	}
 
-	public void setIdAssinatura(int idAssinatura) {
+	public void setIdAssinatura(Integer idAssinatura) {
 		this.idAssinatura = idAssinatura;
 	}
 
@@ -179,27 +180,27 @@ public class AnexosMovimento implements Serializable {
 		this.nmArquivo = nmArquivo;
 	}
 
-	public long getSeqAssinaturaEletronica() {
+	public Long getSeqAssinaturaEletronica() {
 		return this.seqAssinaturaEletronica;
 	}
 
-	public void setSeqAssinaturaEletronica(long seqAssinaturaEletronica) {
+	public void setSeqAssinaturaEletronica(Long seqAssinaturaEletronica) {
 		this.seqAssinaturaEletronica = seqAssinaturaEletronica;
 	}
 
-	public int getTamanhoAnexo() {
+	public Integer getTamanhoAnexo() {
 		return this.tamanhoAnexo;
 	}
 
-	public void setTamanhoAnexo(int tamanhoAnexo) {
+	public void setTamanhoAnexo(Integer tamanhoAnexo) {
 		this.tamanhoAnexo = tamanhoAnexo;
 	}
 
-	public int getTipoAnexo() {
+	public Integer getTipoAnexo() {
 		return this.tipoAnexo;
 	}
 
-	public void setTipoAnexo(int tipoAnexo) {
+	public void setTipoAnexo(Integer tipoAnexo) {
 		this.tipoAnexo = tipoAnexo;
 	}
 
